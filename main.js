@@ -3,19 +3,6 @@ var activeControl = false,
     alpha = 0,
     playMusic = false;
 
-// Play audio
-// $(".controls-music-btn").click(() => {
-//     if (!playMusic) {
-//         playMusic = true;
-//         $("#audio").get(0).play();
-//         $(".controls-music-btn").addClass("active");
-//     } else {
-//         playMusic = false;
-//         $("#audio").get(0).pause();
-//         $(".controls-music-btn").removeClass("active");
-//     }
-// });
-
 function init() {
     var scene = new THREE.Scene();
 
@@ -55,33 +42,12 @@ function init() {
             case "Torus":
                 geometry = new THREE.TorusGeometry(4, 2, 16, 100);
                 break;
-            // case "Torus Knot":
-            //     geometry = new THREE.TorusKnotGeometry(4, 1, 100, 16);
-            //     break;
-            // case "Tetrahedron":
-            //     geometry = new THREE.TetrahedronGeometry(4, 0);
-            //     break;
-            // case "Octahedron":
-            //     geometry = new THREE.OctahedronGeometry(4, 1);
-            //     break;
-            // case "Dodecahedron":
-            //     geometry = new THREE.DodecahedronGeometry(4, 1);
-            //     break;
-            // case "Icosahedron":
-            //     geometry = new THREE.IcosahedronGeometry(4, 0);
-                // break;
             case "Circle":
                 geometry = new THREE.CircleGeometry(5, 32);
                 break;
             case "Cylinder Geometry":
                 geometry = new THREE.CylinderGeometry( 2, 2, 5, 5 );
                 break;
-            // case "Tube":
-            //     geometry = new THREE.TubeGeometry(getTube(6), 20, 2, 8, false);
-            //     break;
-            // case "Heart":
-            //     geometry = new THREE.ExtrudeGeometry(getHeart(), { amount: 2, bevelEnable: true, bevelSegments: 2, steps: 2, bevelSize: 1, bevelThickness: 1 });
-            //     break;
             case "Teapot":
                 geometry = new THREE.TeapotGeometry(4, 10);
                 break;
@@ -91,12 +57,12 @@ function init() {
         scene.remove(scene.getObjectByName("geometry"));
 
         mesh.name = "geometry";
-        mesh.castShadow = true; // Shadow (đổ bóng).
+        mesh.castShadow = true;
 
         scene.add(mesh);
     });
 
-    //Handle event on click surface
+
     $(".surface").click(function () {
         if (activeControl) {
             $(".controls-btn.active").removeClass("active");
@@ -136,7 +102,7 @@ function init() {
                 break;
         }
         mesh.name = "geometry";
-        mesh.castShadow = true; // Shadow (đổ bóng).
+        mesh.castShadow = true;
         scene.add(mesh);
     });
 
@@ -199,7 +165,6 @@ function init() {
         }
     });
 
-    //Handle event on click animation
     $(".animation").click(function () {
         var $nameAnimation = $(this).text();
         if ($(".animation.active").hasClass("active")) {
@@ -330,40 +295,7 @@ function getPlane(size) {
     return mesh;
 }
 
-// function getHeart() {
-//     const x = -10,
-//         y = -10;
-//     var heartShape = new THREE.Shape();
-//     heartShape.moveTo(x + 5, y + 5);
-//     heartShape.bezierCurveTo(x + 5, y + 5, x + 4, y, x, y);
-//     heartShape.bezierCurveTo(x - 6, y, x - 6, y + 7, x - 6, y + 7);
-//     heartShape.bezierCurveTo(x - 6, y + 11, x - 3, y + 15.4, x + 5, y + 19);
-//     heartShape.bezierCurveTo(x + 12, y + 15.4, x + 16, y + 11, x + 16, y + 7);
-//     heartShape.bezierCurveTo(x + 16, y + 7, x + 16, y, x + 10, y);
-//     heartShape.bezierCurveTo(x + 7, y, x + 5, y + 5, x + 5, y + 5);
 
-//     return heartShape;
-// }
-
-// function getTube(size) {
-//     class CustomSinCurve extends THREE.Curve {
-//         constructor(scale = 1) {
-//             super();
-
-//             this.scale = scale;
-//         }
-
-//         getPoint(t, optionalTarget = new THREE.Vector3()) {
-//             const tx = t * 3 - 1.5;
-//             const ty = Math.sin(2 * Math.PI * t);
-//             const tz = 0;
-
-//             return optionalTarget.set(tx, ty, tz).multiplyScalar(this.scale);
-//         }
-//     }
-
-//     return new CustomSinCurve(size);
-// }
 
 function getPointLight(color, intensity, distance) {
     var pointLight = new THREE.PointLight(color, intensity, distance);
