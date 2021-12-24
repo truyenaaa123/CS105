@@ -10,3 +10,8 @@
 ## Người thực hiện
 - Trần Văn Truyen - 19522448
 
+File doc báo cáo: [Report.](https://github.com/truyenaaa123/CS105/raw/main/Report.docx)
+
+Video demo: [Demo](https://www.youtube.com/watch?v=Y2wSMxUfD3U)
+
+Để vào chương trình trực tiếp qua trang web: Demo [Demo](https://truyenaaa123.github.io/CS105/#)
